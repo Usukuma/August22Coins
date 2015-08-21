@@ -38,6 +38,7 @@ public class MyGdxGame extends ApplicationAdapter {
 
 
 //test test test
+	//test test test Sukuma
 
 	//เขียนตัวหนังสือ
 
