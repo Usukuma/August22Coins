@@ -23,7 +23,7 @@ public class MyGdxGame extends ApplicationAdapter {
 	private Texture wallpaperTexture, clouldTexture,
 			pigTexture, coinsTexture;
 	private OrthographicCamera objOrthographicCamera;
-	private BitmapFont nameBitmapFont;
+	private BitmapFont nameBitmapFont, scoreBitmapFont;
 	private int xCloudAnInt, yCloudAnInt = 1480;
 	private boolean cloudABoolean = true;
 	private Rectangle pigRectangle, coinsRectangle;
@@ -32,6 +32,8 @@ public class MyGdxGame extends ApplicationAdapter {
 	private Array<Rectangle> coinsArray;
 	private long lastDropCoins; //random coins ตำแหน่งใหม่ ไม่ซ้ำตำแหน่งเดิม
 	private Iterator<Rectangle> coinsIterator; // interator เลือก java.util
+	private int scoreAnInt = 0;
+
 
 
 	//เขียนตัวหนังสือ
@@ -88,6 +90,12 @@ public class MyGdxGame extends ApplicationAdapter {
 		//setup coins drop sound
 		coinsDropSound = Gdx.audio.newSound(Gdx.files.internal("coins_drop.wav"));
 
+		//setup bitmapFont
+		scoreBitmapFont = new BitmapFont();
+		scoreBitmapFont.setColor(Color.BLUE);
+		scoreBitmapFont.setScale(4);
+
+
 	} //create
 
 	private void coinsRandomDrop() {
@@ -131,6 +139,9 @@ public class MyGdxGame extends ApplicationAdapter {
 		for (Rectangle forCoins: coinsArray) {
 			batch.draw(coinsTexture, forCoins.x, forCoins.y);
 		}
+
+		//Drawable Score
+		scoreBitmapFont.draw(batch, "Score =" + Integer.toString(scoreAnInt), 1000, 750);
 
 
 		//batch.draw(img, 0, 0);
